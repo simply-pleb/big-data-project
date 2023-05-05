@@ -1,3 +1,3 @@
 SET datestyle TO iso, ymd;
 
-\COPY trips FROM 'data/train.csv' DELIMITER ',' CSV HEADER NULL AS 'null';
+\COPY trips FROM ''../ data /trips.tsv '' DELIMITER E'\t' CSV HEADER NULL AS '""';
