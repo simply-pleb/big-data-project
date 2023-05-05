@@ -1,16 +1,8 @@
 #!/bin/bash
-#!/bin/bash
 
 # Draft: Create the table
-# TODO: Note: Do not forget, that the file .sql should not return errors when you run it for the second time, 
+# TODO: Note: Do not forget, that the file .sql should not return errors when you run it for the second time,
 #       so you should clear/drop the objects before creating new database objects.
-
-# PostgreSQL connection details
-DB_HOST="localhost"
-DB_PORT="5432"
-DB_NAME="project"
-DB_USER="postgres"
-DB_PASSWORD="your_password" # TODO: change password
 
 # SQL statement to create the table
 SQL_STATEMENT="
@@ -27,15 +19,9 @@ CREATE TABLE IF NOT EXISTS trips (
 );
 "
 
-# Create the database
-PGPASSWORD=$DB_PASSWORD psql -h $DB_HOST -p $DB_PORT -U $DB_USER -c "CREATE DATABASE $DB_NAME;" || exit 1
+psql -U postgres -c "$SQL_STATEMENT" || exit 1
 
-# Connect to the database
-PGPASSWORD=$DB_PASSWORD psql -h $DB_HOST -p $DB_PORT -d $DB_NAME -U $DB_USER -c "$SQL_STATEMENT" || exit 1
-
-echo "Database and table created successfully."
-
-# TODO: Add the constraints.
+echo "Table created successfully."
 
 # TODO: Load data from csv files.
-PGPASSWORD=$DB_PASSWORD psql -U $DB_USER -d $DB_NAME -f sql/load_csv.sql
+psql -U postgres -f ../sql/load_csv.sql
