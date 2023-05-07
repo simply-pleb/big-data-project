@@ -7,7 +7,7 @@
 # SQL statement to create the table
 SQL_STATEMENT="
 CREATE TABLE IF NOT EXISTS trips (
-    trip_id VARCHAR(30) PRIMARY KEY,
+    trip_id VARCHAR(120) PRIMARY KEY,
     call_type VARCHAR(10) NOT NULL,
     origin_call INTEGER NULL,
     origin_stand INTEGER NULL,
